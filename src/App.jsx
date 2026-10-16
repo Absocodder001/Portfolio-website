@@ -1,4 +1,5 @@
 import React from 'react';
+import AmbientBackground from './components/AmbientBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,6 +14,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen bg-[#060608] text-neutral-100 font-sans selection:bg-white selection:text-black">
       
+      <AmbientBackground />
       {/* Background Architectural Grid Pattern */}
       <div className="fixed inset-0 architect-grid opacity-25 pointer-events-none z-0" />
       <div className="fixed inset-0 architect-dots opacity-10 pointer-events-none z-0" />
