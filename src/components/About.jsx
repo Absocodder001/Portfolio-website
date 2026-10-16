@@ -9,7 +9,7 @@ export default function About() {
     { label: 'PRIMARY ROLE', value: 'Frontend Developer & Web Designer', icon: Code },
     { label: 'ACADEMIC INSTITUTION', value: 'Sister Nivedita University, Kolkata', icon: GraduationCap },
     { label: 'CONTACT PHONE', value: '+91 7439856465', icon: Phone },
-    { label: 'PRIMARY EMAIL', value: 'yadavhema231@gmail.com', icon: Mail },
+    { label: 'PRIMARY EMAIL', value: 'raelwebdeveloper@gmail.com', icon: Mail },
   ];
 
   const languages = [
