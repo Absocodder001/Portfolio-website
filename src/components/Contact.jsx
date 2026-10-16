@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Mail,
-  Instagram, 
+  AtSign, 
   Phone, 
   MapPin, 
   Send, 
@@ -91,7 +91,7 @@ export default function Contact() {
                   </div>
 
                   <a href="https://www.instagram.com/studioraelweb/" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition-colors flex items-center gap-3">
-                    <div className="p-2 rounded bg-neutral-950 border border-neutral-800 text-white"><Instagram className="w-4 h-4" /></div>
+                    <div className="p-2 rounded bg-neutral-950 border border-neutral-800 text-white"><AtSign className="w-4 h-4" /></div>
                     <div><div className="text-[10px] text-neutral-500 uppercase">INSTAGRAM</div><span className="text-neutral-200 font-medium">@studioraelweb</span></div>
                   </a>
 
