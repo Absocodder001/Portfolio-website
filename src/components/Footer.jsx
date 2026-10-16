@@ -31,6 +31,10 @@ export default function Footer() {
             </div>
           </div>
 
+          <div className="md:col-span-12 flex flex-wrap gap-5 text-xs">
+            <a href="mailto:raelwebdeveloper@gmail.com" className="text-[#cee9c0] hover:text-white">raelwebdeveloper@gmail.com ↗</a>
+            <a href="https://www.instagram.com/studioraelweb/" target="_blank" rel="noopener noreferrer" className="text-[#cee9c0] hover:text-white">Instagram / @studioraelweb ↗</a>
+          </div>
           {/* Quick Nav Anchors (6 Cols) */}
           <div className="md:col-span-6 flex flex-wrap md:justify-end gap-x-6 gap-y-2 text-[11px]">
             <a href="#about" className="hover:text-white transition-colors">01. ABOUT</a>
