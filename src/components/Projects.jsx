@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { ExternalLink, ArrowUpRight, Flame, Brain, Users } from 'lucide-react';
+import { Flame, Brain, Users } from 'lucide-react';
+import PolaroidLineCarousel from './ui/polaroid-line-carousel';
 import ProjectModal from './ProjectModal';
-import { SplitHeading, ScrollReveal } from './ScrollReveal';
-import { cyberAudio } from '../utils/audio';
 
 export default function Projects() {
   const [activeModalProject, setActiveModalProject] = useState(null);
@@ -70,136 +69,23 @@ export default function Projects() {
     }
   ];
 
+  const slides = [
+    { title: 'Ironcore Fitness', caption: 'A bold multi-page experience for a fictional gym brand.', label: 'WEB DESIGN & DEVELOPMENT', image: '/projects/ironcore.svg', alt: 'Illustrative Ironcore Fitness interface artwork', liveUrl: projects[0].liveUrl },
+    { title: 'StudyPilot AI', caption: 'An AI-assisted planner that helps students organize what comes next.', label: 'AI APPLICATION', image: '/projects/studypilot.svg', alt: 'Illustrative StudyPilot AI interface artwork', liveUrl: projects[1].liveUrl },
+    { title: 'Skillora', caption: 'A freelancer-manager and marketplace idea in early planning.', label: 'EXPLORING / CONCEPT', image: '/projects/skillora.svg', alt: 'Skillora concept artwork' },
+  ];
   return (
-    <section id="projects" className="relative py-24 bg-[#08080b] border-t border-neutral-800 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header with Split Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
-          <SplitHeading
-            prefix="SECTION // 03. FEATURED WORK"
-            leftText="ENGINEERED"
-            rightText="PROJECTS"
-          />
-
-          <ScrollReveal direction="right">
-            <p className="text-neutral-400 text-xs sm:text-sm font-mono max-w-md mt-4 md:mt-0">
-              Independent web builds, live demos, and work-in-progress concepts by Abhijeet Yadav.
-            </p>
-          </ScrollReveal>
+    <section id="projects" className="relative isolate py-16 md:py-20 overflow-hidden border-t border-white/10">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-10 flex flex-wrap items-end justify-between gap-6 relative z-10">
+        <div>
+          <span className="ay-eyebrow">03 / SELECTED WORK</span>
+          <h2 className="ay-section-title mt-4">Proof, not promises<span className="text-[#c9f48d]">.</span></h2>
         </div>
-
-        {/* Projects Cards Grid with Alternating Scroll Animations */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {projects.map((proj, idx) => {
-            const Icon = proj.icon;
-            const dir = idx === 0 ? 'left' : idx === 1 ? 'bottom' : 'right';
-
-            return (
-              <ScrollReveal key={proj.id} direction={dir} delay={idx * 110} className="h-full">
-                <div
-                  className="group relative rounded-2xl bg-[#0e0e12] border border-neutral-800 hover:border-neutral-600 p-6 sm:p-7 backdrop-blur-xl flex flex-col justify-between transition-all duration-300 h-full"
-                >
-                  {/* Card Top Indicator */}
-                  <div>
-                    <div className="flex items-center justify-between pb-4 mb-5 border-b border-neutral-800 font-mono text-xs">
-                      <span className="text-white flex items-center gap-1.5 font-bold">
-                        <span className="text-neutral-400">0{idx + 1}.</span> {proj.codeId}
-                      </span>
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono border bg-neutral-900 border-neutral-700 text-neutral-300">
-                        {proj.category.split('/')[0]}
-                      </span>
-                    </div>
-
-                    {/* Project Visual Icon / Mockup badge */}
-                    <div className="flex items-center gap-3.5 mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:scale-105 transition-all">
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <div>
-                        <h3 className="font-['Space_Grotesk'] text-xl font-bold text-white group-hover:text-neutral-200 transition-colors">
-                          {proj.title}
-                        </h3>
-                        <p className="text-xs text-neutral-400 font-mono">
-                          {proj.subtitle}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-xs text-neutral-300 leading-relaxed font-light mb-6">
-                      {proj.description}
-                    </p>
-
-                    {/* Key Highlights list */}
-                    <div className="space-y-2 mb-6">
-                      {proj.highlights.slice(0, 2).map((h, i) => (
-                        <div key={i} className="flex items-start gap-2 text-xs text-neutral-400 font-light">
-                          <span className="text-white font-mono font-bold">✓</span>
-                          <span className="line-clamp-2">{h}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Card Bottom: Tech Stack & Actions */}
-                  <div>
-                    {/* Tech chips */}
-                    <div className="flex flex-wrap gap-1.5 mb-6 pt-4 border-t border-neutral-800">
-                      {proj.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 rounded bg-neutral-900 border border-neutral-800 text-[10px] font-mono text-neutral-400"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <button
-                        onClick={() => {
-                          cyberAudio.playWarp();
-                          setActiveModalProject(proj);
-                        }}
-                        className="w-full py-2.5 rounded-lg font-mono text-xs font-semibold uppercase text-neutral-200 bg-neutral-900 border border-neutral-700 hover:bg-neutral-800 hover:border-neutral-500 transition-all flex items-center justify-center gap-1.5"
-                      >
-                        <span>SPECS</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </button>
-
-                      {proj.liveUrl ? (
-                        <a
-                          href={proj.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={() => cyberAudio.playChime(700)}
-                          className="w-full py-2.5 rounded-lg font-mono text-xs font-bold uppercase text-black bg-white hover:bg-neutral-200 transition-all flex items-center justify-center gap-1.5"
-                        >
-                          <span>LIVE DEMO</span>
-                          <ExternalLink className="w-3.5 h-3.5" />
-                        </a>
-                      ) : (
-                        <span className="w-full py-2.5 rounded-lg font-mono text-xs font-semibold uppercase text-neutral-400 bg-neutral-900 border border-neutral-800 flex items-center justify-center">
-                          CONCEPT ONLY
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            );
-          })}
-        </div>
-
-        {/* Project Modal Trigger */}
-        <ProjectModal
-          project={activeModalProject}
-          onClose={() => setActiveModalProject(null)}
-        />
-
+        <div className="max-w-sm text-sm text-neutral-400 leading-relaxed">Real demos and a concept in progress. Drag the line, browse the prints, and open a project to see what I built.</div>
       </div>
+      <PolaroidLineCarousel slides={slides} ariaLabel="Abhijeet Yadav featured projects" height="min(77svh,750px)" cardWidth={330} sag={46} swing={0.85} autoplay={5800} onSelect={i => setActiveModalProject(projects[i])} />
+      <p className="relative text-center text-[11px] font-mono text-neutral-500 px-6 pb-6">Artwork is illustrative. Use “Visit live website” to see the actual deployed project.</p>
+      <ProjectModal project={activeModalProject} onClose={() => setActiveModalProject(null)} />
     </section>
   );
 }
