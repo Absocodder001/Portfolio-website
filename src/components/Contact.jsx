@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  Mail, 
+  Mail,
+  Instagram, 
   Phone, 
   MapPin, 
   Send, 
@@ -28,7 +29,7 @@ export default function Contact() {
     cyberAudio.playWarp();
 
     // Direct transmission to primary email via mailto
-    const mailtoLink = `mailto:yadavhema231@gmail.com?subject=${encodeURIComponent(
+    const mailtoLink = `mailto:raelwebdeveloper@gmail.com?subject=${encodeURIComponent(
       formData.subject || 'Portfolio Inquiry from ' + formData.name
     )}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
@@ -83,11 +84,16 @@ export default function Contact() {
                     </div>
                     <div className="min-w-0">
                       <div className="text-[10px] text-neutral-500 uppercase">EMAIL ADDRESS</div>
-                      <a href="mailto:yadavhema231@gmail.com" className="text-neutral-200 hover:text-white truncate font-medium block">
-                        yadavhema231@gmail.com
+                      <a href="mailto:raelwebdeveloper@gmail.com" className="text-neutral-200 hover:text-white truncate font-medium block">
+                        raelwebdeveloper@gmail.com
                       </a>
                     </div>
                   </div>
+
+                  <a href="https://www.instagram.com/studioraelweb/" target="_blank" rel="noopener noreferrer" className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 transition-colors flex items-center gap-3">
+                    <div className="p-2 rounded bg-neutral-950 border border-neutral-800 text-white"><Instagram className="w-4 h-4" /></div>
+                    <div><div className="text-[10px] text-neutral-500 uppercase">INSTAGRAM</div><span className="text-neutral-200 font-medium">@studioraelweb</span></div>
+                  </a>
 
                   {/* Phone card */}
                   <div className="p-3.5 rounded-xl bg-neutral-900 border border-neutral-800 hover:border-neutral-700 transition-colors flex items-center gap-3">
