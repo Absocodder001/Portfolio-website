@@ -50,7 +50,7 @@ export default function TerminalSection() {
     ],
     contact: [
       'COMMUNICATION COORDINATES:',
-      '  Email: yadavhema231@gmail.com',
+      '  Email: raelwebdeveloper@gmail.com',
       '  Phone: +91 7439856465',
       '  Location: Howrah, West Bengal, India',
       '  Status: Open for Contract, Freelance & Frontend Internships'
