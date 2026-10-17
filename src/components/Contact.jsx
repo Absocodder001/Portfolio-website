@@ -20,22 +20,84 @@ export default function Contact() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState({ type: 'idle', message: '' });
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((previous) => ({ ...previous, [e.target.name]: e.target.value }));
+    if (submissionStatus.type !== 'idle') {
+      setSubmissionStatus({ type: 'idle', message: '' });
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    cyberAudio.playWarp();
+    if (isSubmitting) return;
 
-    // Direct transmission to primary email via mailto
-    const mailtoLink = `mailto:raelwebdeveloper@gmail.com?subject=${encodeURIComponent(
-      formData.subject || 'Portfolio Inquiry from ' + formData.name
-    )}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-    
-    window.location.href = mailtoLink;
+    // A bot trap, without interrupting real visitors or opening another page.
+    const honeypot = e.currentTarget.elements.namedItem('_honey');
+    if (honeypot?.value) return;
+
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const subject = formData.subject.trim();
+    const message = formData.message.trim();
+    if (!name || !email || !subject || !message) {
+      setSubmissionStatus({ type: 'error', message: 'Please complete all fields before sending.' });
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmissionStatus({ type: 'idle', message: '' });
+
+    // FormSubmit's no-key AJAX endpoint sends the inquiry to this mailbox.
+    // It requires one email activation by the owner on first use.
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/raelwebdeveloper@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          _subject: `Portfolio inquiry: ${subject.slice(0, 100)}`,
+          _template: 'table',
+          _captcha: 'false',
+          _honey: '',
+          _url: window.location.href,
+        }),
+      });
+      const data = await response.json();
+      // FormSubmit uses string values "true"/"false" in some responses.
+      // Do NOT use if (data.success): the string "false" is truthy.
+      const accepted = data?.success === true || data?.success === 'true';
+      if (response.ok && accepted) {
+        setSubmissionStatus({ type: 'success', message: 'Message submitted successfully. Thanks for reaching out! I’ll get back to you soon.' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        cyberAudio.playChime(600);
+      } else if (/activat|confirm.*email/i.test(String(data?.message || ''))) {
+        // First submission prompts email confirmation. FormSubmit retains it
+        // until the recipient confirms the address.
+        setSubmissionStatus({ type: 'pending', message: 'Your message is queued while the contact inbox is being activated. You do not need to resend it.' });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('The form service did not accept the message.');
+      }
+    } catch (error) {
+      setSubmissionStatus({
+        type: 'error',
+        message: error?.name === 'AbortError'
+          ? 'Sending timed out. Your message was not confirmed. Please try again.'
+          : 'Unable to send your message right now. Please try again shortly.',
+      });
+    } finally {
+      clearTimeout(timeout);
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -149,7 +211,8 @@ export default function Contact() {
                   <span className="text-neutral-500 font-mono">TLS_SECURE</span>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4" aria-busy={isSubmitting}>
+                  <input type="text" name="_honey" tabIndex={-1} aria-hidden="true" autoComplete="off" style={{ display: 'none' }} />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="block font-mono text-[11px] uppercase tracking-wider text-neutral-400">
@@ -214,14 +277,30 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-lg font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-black bg-white hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-lg font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-black bg-white hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-wait"
                   >
                     <Send className="w-4 h-4" />
-                    <span>OPEN EMAIL TO SEND</span>
+                    <span>{isSubmitting ? 'SENDING MESSAGE...' : 'SEND MESSAGE'}</span>
                   </button>
                 </form>
+                {submissionStatus.type !== 'idle' && (
+                  <p
+                    role={submissionStatus.type === 'error' ? 'alert' : 'status'}
+                    aria-live="polite"
+                    className={`mt-4 rounded-lg border px-4 py-3 text-xs leading-relaxed ${
+                      submissionStatus.type === 'success'
+                        ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200'
+                        : submissionStatus.type === 'pending'
+                          ? 'border-amber-500/30 bg-amber-500/10 text-amber-200'
+                          : 'border-red-500/30 bg-red-500/10 text-red-200'
+                    }`}
+                  >
+                    {submissionStatus.message}
+                  </p>
+                )}
                 <p className="mt-3 text-[11px] text-neutral-500 leading-relaxed">
-                  This opens your email application with the message prefilled. Please send it there to complete your inquiry.
+                  Send your inquiry here without opening your email app. Messages are processed by FormSubmit for email delivery. Please do not include sensitive information.
                 </p>
               </div>
             </ScrollReveal>
