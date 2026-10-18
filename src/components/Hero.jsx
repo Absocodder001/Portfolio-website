@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Terminal, ChevronDown, Monitor, Laptop } from 'lucide-react';
-import LaptopWorkstation from './LaptopWorkstation';
-import WebGLBoundary from './WebGLBoundary';
+import { ArrowRight, Terminal, ChevronDown } from 'lucide-react';
+import InteractiveParticleSilk from './InteractiveParticleSilk';
 import { ScrollReveal } from './ScrollReveal';
 import { cyberAudio } from '../utils/audio';
 
@@ -141,31 +140,10 @@ export default function Hero() {
             </ScrollReveal>
           </div>
 
-          {/* Right Column: 3D Interactive Laptop Workstation (6 Cols) */}
-          <div className="lg:col-span-6 relative flex items-center justify-center">
+          {/* Laptop removed; everything else in Hero remains as it was. */}
+          <div className="lg:col-span-6 relative flex items-center justify-center min-w-0">
             <ScrollReveal direction="right" className="w-full">
-              <div className="relative w-full rounded-2xl bg-[#0c0c10] border border-neutral-800 p-2 shadow-2xl">
-                
-                {/* Viewport Top Header */}
-                <div className="flex items-center justify-between px-3 py-2 border-b border-neutral-800/80 bg-[#101014] font-mono text-[11px] text-neutral-400">
-                  <span className="text-white flex items-center gap-1.5 font-semibold">
-                    <Laptop className="w-3.5 h-3.5 text-neutral-300" />
-                    INTERACTIVE_3D_WORKSTATION
-                  </span>
-                  <span className="text-[10px] text-neutral-500 font-mono">
-                    CLICK & DRAG TO ORBIT
-                  </span>
-                </div>
-
-                {/* 3D Laptop Canvas */}
-                <WebGLBoundary><LaptopWorkstation /></WebGLBoundary>
-
-                {/* Viewport Bottom Bar */}
-                <div className="px-3 py-2 border-t border-neutral-800/80 bg-[#101014] flex items-center justify-between font-mono text-[10px] text-neutral-400">
-                  <span>TITANIUM UNIBODY // REAL-TIME TEXTURE BUFFER</span>
-                  <span className="text-neutral-300">INTERACTION: ENABLED</span>
-                </div>
-              </div>
+              <InteractiveParticleSilk />
             </ScrollReveal>
           </div>
 
