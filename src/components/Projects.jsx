@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flame, Brain, Users } from 'lucide-react';
+import { Flame, Brain, Users, Gamepad2 } from 'lucide-react';
 import PolaroidLineCarousel from './ui/polaroid-line-carousel';
 import ProjectModal from './ProjectModal';
 
@@ -48,8 +48,28 @@ export default function Projects() {
       githubUrl: null,
     },
     {
+      id: 'dont-open-the-door',
+      codeId: 'PROJ-03 // DONT OPEN THE DOOR',
+      title: "Don't Open the Door",
+      subtitle: 'Personal Browser Game and Rive Experiment',
+      category: 'INTERACTIVE GAME / RIVE',
+      tagline: 'A small, original game you can actually play online',
+      description: 'Made and published a personal browser game using Rive. The playable experience opens with a minimalist, dark, retro-style game menu.',
+      fullDescription: "Don't Open the Door is a small interactive game I created and shared on Rive. Its browser-based experience and retro-styled interface are a personal experiment in interactive design, not a commercial game release.",
+      highlights: [
+        'Created and shared a playable personal game.',
+        'Designed a retro-inspired title screen with Start, Settings, and Exit Game.',
+        'Published the interactive experience on Rive so visitors can play it in their browser.',
+        'Experimented with interactive animation and game-interface design.'
+      ],
+      techStack: ['Rive', 'Interactive Animation', 'Browser Game'],
+      icon: Gamepad2,
+      liveUrl: 'https://dont-open-the-door-6af1rp.rive.to/',
+      githubUrl: null,
+    },
+    {
       id: 'skillora',
-      codeId: 'PROJ-03 // SKILLORA',
+      codeId: 'PROJ-04 // SKILLORA',
       title: 'Skillora',
       subtitle: 'Freelancer & Client Marketplace Concept Platform',
       category: 'MARKETPLACE UI / CLIENT PORTAL',
@@ -72,6 +92,7 @@ export default function Projects() {
   const slides = [
     { title: 'Ironcore Fitness', caption: 'A bold multi-page experience for a fictional gym brand.', label: 'WEB DESIGN & DEVELOPMENT', image: '/projects/ironcore.svg', alt: 'Illustrative Ironcore Fitness interface artwork', liveUrl: projects[0].liveUrl },
     { title: 'StudyPilot AI', caption: 'An AI-assisted planner that helps students organize what comes next.', label: 'AI APPLICATION', image: '/projects/studypilot.svg', alt: 'Illustrative StudyPilot AI interface artwork', liveUrl: projects[1].liveUrl },
+    { title: "Don't Open the Door", caption: 'A small original Rive game with a retro-style start screen. Play it online.', label: 'PERSONAL GAME / RIVE', image: '/projects/dont-open-the-door.png', alt: "Real screenshot of Don't Open the Door game title screen", liveUrl: projects[2].liveUrl },
     { title: 'Skillora', caption: 'A freelancer-manager and marketplace idea in early planning.', label: 'EXPLORING / CONCEPT', image: '/projects/skillora.svg', alt: 'Skillora concept artwork' },
   ];
   return (
@@ -81,10 +102,10 @@ export default function Projects() {
           <span className="ay-eyebrow">03 / SELECTED WORK</span>
           <h2 className="ay-section-title mt-4">Proof, not promises<span className="text-[#c9f48d]">.</span></h2>
         </div>
-        <div className="max-w-sm text-sm text-neutral-400 leading-relaxed">Real demos and a concept in progress. Drag the line, browse the prints, and open a project to see what I built.</div>
+        <div className="max-w-sm text-sm text-neutral-400 leading-relaxed">Web projects, a playable game, and a concept in progress. Drag the line, browse the prints, and open a project to explore the work.</div>
       </div>
       <PolaroidLineCarousel slides={slides} ariaLabel="Abhijeet Yadav featured projects" height="min(77svh,750px)" cardWidth={330} sag={46} swing={0.85} autoplay={5800} onSelect={i => setActiveModalProject(projects[i])} />
-      <p className="relative text-center text-[11px] font-mono text-neutral-500 px-6 pb-6">Artwork is illustrative. Use “Visit live website” to see the actual deployed project.</p>
+      <p className="relative text-center text-[11px] font-mono text-neutral-500 px-6 pb-6">Website and concept artwork is illustrative; the game print uses a real screenshot. Open a live link to try a project.</p>
       <ProjectModal project={activeModalProject} onClose={() => setActiveModalProject(null)} />
     </section>
   );
