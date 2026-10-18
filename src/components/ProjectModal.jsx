@@ -137,7 +137,7 @@ export default function ProjectModal({ project, onClose }) {
 
         {/* Modal Footer */}
         <div className="px-6 py-3 bg-[#101014] border-t border-neutral-800 flex items-center justify-between font-mono text-xs text-neutral-400">
-          <span>STATUS: DEPLOYED & TESTED</span>
+          <span>{project.id === 'dont-open-the-door' ? 'STATUS: PLAYABLE DEMO' : project.liveUrl ? 'STATUS: LIVE PROJECT' : 'STATUS: CONCEPT'}</span>
           <button
             onClick={onClose}
             className="text-white hover:underline"
