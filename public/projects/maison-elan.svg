@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 760" role="img" aria-label="Illustrative MAISON ÉLAN womenswear storefront preview">
+  <defs>
+    <linearGradient id="back" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2a302e"/><stop offset="1" stop-color="#11181a"/></linearGradient>
+    <linearGradient id="studio" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7c4ad"/><stop offset=".6" stop-color="#b7a38f"/><stop offset="1" stop-color="#887562"/></linearGradient>
+    <linearGradient id="fabric" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#f9f5ee"/><stop offset="1" stop-color="#b8aa94"/></linearGradient>
+  </defs>
+  <rect width="860" height="760" fill="url(#back)"/>
+  <path d="M0 632 860 348v412H0Z" fill="#d3c3ac" opacity=".08"/>
+  <rect x="52" y="63" width="756" height="617" rx="9" fill="#eee9df" stroke="#d4cbbb" stroke-width="2"/>
+  <rect x="52" y="63" width="756" height="37" rx="9" fill="#242622"/>
+  <path d="M52 91h756" stroke="#242622"/>
+  <text x="430" y="87" text-anchor="middle" fill="#eeeae3" font-family="Arial,sans-serif" font-size="13" letter-spacing="3">PAKISTAN  ·  THE STUDIO EDIT</text>
+  <rect x="52" y="100" width="756" height="65" fill="#f5f0e7"/>
+  <text x="92" y="141" fill="#252422" font-family="Georgia,serif" font-size="34" letter-spacing="2">MAISON ÉLAN</text>
+  <text x="638" y="138" fill="#55534e" font-family="Arial,sans-serif" font-size="13" letter-spacing="2">HOME   SHOP   BAG</text>
+  <rect x="83" y="185" width="346" height="453" fill="#eee9df"/>
+  <text x="98" y="226" font-family="Arial,sans-serif" font-size="15" letter-spacing="4" fill="#615d54">COLLECTION 01 / 2026</text>
+  <text x="92" y="326" font-family="Georgia,serif" font-size="69" fill="#252422">The</text>
+  <text x="92" y="400" font-family="Georgia,serif" font-size="69" fill="#252422">studio</text>
+  <text x="92" y="474" font-family="Georgia,serif" font-size="69" fill="#252422">edit.</text>
+  <path d="M98 504h275" stroke="#999084" stroke-width="1"/>
+  <text x="98" y="537" fill="#58524a" font-family="Arial,sans-serif" font-size="19">Considered everyday pieces.</text>
+  <text x="98" y="565" fill="#58524a" font-family="Arial,sans-serif" font-size="19">A quiet, modern wardrobe.</text>
+  <rect x="98" y="585" width="216" height="42" fill="#252422"/>
+  <text x="206" y="612" text-anchor="middle" fill="#f7f3eb" font-family="Arial,sans-serif" font-size="14" letter-spacing="2">EXPLORE COLLECTION</text>
+  <rect x="448" y="185" width="330" height="453" fill="url(#studio)"/>
+  <ellipse cx="614" cy="595" rx="134" ry="16" fill="#635545" opacity=".19"/>
+  <path d="M588 254q26-24 53 0l19 30-20 18h-51l-20-18Z" fill="#eadcc9" stroke="#988777" stroke-width="2"/>
+  <path d="M588 276 563 295 516 355l33 34 38-30 13 26-14 172q32 32 66 0l-14-172 13-26 38 30 33-34-47-60-25-19-21 42Z" fill="url(#fabric)" stroke="#ac9c8b" stroke-width="2"/>
+  <path d="m599 304 21 34 20-34m-20 34v205m-38-162 15 159m42-159-14 159" fill="none" stroke="#8f8274" stroke-width="2" opacity=".7"/>
+  <circle cx="621" cy="365" r="3" fill="#8e7a66"/><circle cx="621" cy="399" r="3" fill="#8e7a66"/><circle cx="621" cy="435" r="3" fill="#8e7a66"/>
+  <text x="470" y="619" fill="#433c35" font-family="Arial,sans-serif" font-size="12" letter-spacing="3">SOFT STUDIO / IVORY &amp; SAND</text>
+  <text x="69" y="715" fill="#e4dccd" font-family="Arial,sans-serif" font-size="20" letter-spacing="4">MAISON ÉLAN   /   FASHION STOREFRONT DEMO</text>
+</svg>
