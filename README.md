@@ -25,6 +25,7 @@ npm run build
 ## Portfolio projects
 
 - [Ironcore Fitness](https://ironcore-fitness-seven.vercel.app/)
+- [MAISON ÉLAN — women's fashion storefront demo](https://maison-elan-demo.pages.dev/)
 - [StudyPilot](https://studypilot-ai-pied-eta.vercel.app/)
 
 The site has a 3D laptop and an email-app-based contact handoff; it does **not** yet send inquiries to a server.
