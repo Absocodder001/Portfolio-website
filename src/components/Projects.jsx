@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flame, Brain, Users, Gamepad2 } from 'lucide-react';
+import { Flame, Brain, Users, Gamepad2, ShoppingBag } from 'lucide-react';
 import PolaroidLineCarousel from './ui/polaroid-line-carousel';
 import ProjectModal from './ProjectModal';
 
@@ -28,8 +28,28 @@ export default function Projects() {
       githubUrl: null,
     },
     {
+      id: 'maison-elan',
+      codeId: 'PROJ-02 // MAISON ELAN',
+      title: 'MAISON ÉLAN',
+      subtitle: 'Premium Womenswear E-commerce Storefront Demo',
+      category: 'E-COMMERCE UI / NEXT.JS',
+      tagline: 'A responsive three-page shopping experience for a fictional fashion brand',
+      description: 'Designed and deployed a women\'s clothing storefront demo for a potential client project. Includes a fashion landing page, searchable and filterable product collection, individual product pages, and interactive demo shopping bag.',
+      fullDescription: 'MAISON ÉLAN is an independently developed three-page fashion store concept, with a Pakistan-focused sample catalog and PKR pricing. Visitors can explore products and try shopping interactions, but this is a design and functionality demo: there are no live payments, real inventory, or order processing.',
+      highlights: [
+        'Created homepage, shop collection and product detail pages using Next.js, TypeScript and Tailwind CSS.',
+        'Implemented combined catalog search, clothing-type, size, colour and price filters, plus sorting.',
+        'Added product galleries, sample size availability, quantity selection and an interactive shopping bag with PKR subtotals.',
+        'Published a publicly accessible static demo on Cloudflare Pages; real checkout is deliberately disabled.'
+      ],
+      techStack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Cloudflare Pages', 'Responsive UI'],
+      icon: ShoppingBag,
+      liveUrl: 'https://maison-elan-demo.pages.dev/',
+      githubUrl: null,
+    },
+    {
       id: 'studypilot',
-      codeId: 'PROJ-02 // STUDYPILOT',
+      codeId: 'PROJ-03 // STUDYPILOT',
       title: 'StudyPilot AI',
       subtitle: 'AI-Powered Adaptive Study Planning & Syllabus Optimizer',
       category: 'AI APPLICATION / GEMINI API',
@@ -49,7 +69,7 @@ export default function Projects() {
     },
     {
       id: 'dont-open-the-door',
-      codeId: 'PROJ-03 // DONT OPEN THE DOOR',
+      codeId: 'PROJ-04 // DONT OPEN THE DOOR',
       title: "Don't Open the Door",
       subtitle: 'Personal Browser Game and Rive Experiment',
       category: 'INTERACTIVE GAME / RIVE',
@@ -69,7 +89,7 @@ export default function Projects() {
     },
     {
       id: 'skillora',
-      codeId: 'PROJ-04 // SKILLORA',
+      codeId: 'PROJ-05 // SKILLORA',
       title: 'Skillora',
       subtitle: 'Freelancer & Client Marketplace Concept Platform',
       category: 'MARKETPLACE UI / CLIENT PORTAL',
@@ -91,8 +111,9 @@ export default function Projects() {
 
   const slides = [
     { title: 'Ironcore Fitness', caption: 'A bold multi-page experience for a fictional gym brand.', label: 'WEB DESIGN & DEVELOPMENT', image: '/projects/ironcore.svg', alt: 'Illustrative Ironcore Fitness interface artwork', liveUrl: projects[0].liveUrl },
-    { title: 'StudyPilot AI', caption: 'An AI-assisted planner that helps students organize what comes next.', label: 'AI APPLICATION', image: '/projects/studypilot.svg', alt: 'Illustrative StudyPilot AI interface artwork', liveUrl: projects[1].liveUrl },
-    { title: "Don't Open the Door", caption: 'A small original Rive game with a retro-style start screen. Play it online.', label: 'PERSONAL GAME / RIVE', image: '/projects/dont-open-the-door.png', alt: "Real screenshot of Don't Open the Door game title screen", liveUrl: projects[2].liveUrl },
+    { title: 'MAISON ÉLAN', caption: 'An editorial womenswear storefront with product filters, detailed listings and a demo shopping bag.', label: 'FASHION E-COMMERCE DEMO', image: '/projects/maison-elan.svg', alt: 'Illustrative MAISON ÉLAN fashion website preview', liveUrl: projects[1].liveUrl },
+    { title: 'StudyPilot AI', caption: 'An AI-assisted planner that helps students organize what comes next.', label: 'AI APPLICATION', image: '/projects/studypilot.svg', alt: 'Illustrative StudyPilot AI interface artwork', liveUrl: projects[2].liveUrl },
+    { title: "Don't Open the Door", caption: 'A small original Rive game with a retro-style start screen. Play it online.', label: 'PERSONAL GAME / RIVE', image: '/projects/dont-open-the-door.png', alt: "Real screenshot of Don't Open the Door game title screen", liveUrl: projects[3].liveUrl },
     { title: 'Skillora', caption: 'A freelancer-manager and marketplace idea in early planning.', label: 'EXPLORING / CONCEPT', image: '/projects/skillora.svg', alt: 'Skillora concept artwork' },
   ];
   return (
@@ -105,7 +126,7 @@ export default function Projects() {
         <div className="max-w-sm text-sm text-neutral-400 leading-relaxed">Web projects, a playable game, and a concept in progress. Drag the line, browse the prints, and open a project to explore the work.</div>
       </div>
       <PolaroidLineCarousel slides={slides} ariaLabel="Abhijeet Yadav featured projects" height="min(77svh,750px)" cardWidth={330} sag={46} swing={0.85} autoplay={5800} onSelect={i => setActiveModalProject(projects[i])} />
-      <p className="relative text-center text-[11px] font-mono text-neutral-500 px-6 pb-6">Website and concept artwork is illustrative; the game print uses a real screenshot. Open a live link to try a project.</p>
+      <p className="relative text-center text-[11px] font-mono text-neutral-500 px-6 pb-6">Project preview artwork is illustrative; the game print uses a real screenshot. Open a live link to try a project.</p>
       <ProjectModal project={activeModalProject} onClose={() => setActiveModalProject(null)} />
     </section>
   );
